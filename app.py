@@ -71,10 +71,10 @@ def main():
         chunks = text_splitter.split_text(text=text)
         
         #embeddings = OpenAIEmbeddings()
-        embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+        embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl") #instructor-xl performs better than OpenAI but very slow
         
         PINECONE_API_KEY = os.environ.get('PINECONE_API_KEY', 'at pinecone.io')
-        PINECONE_API_ENV = os.environ.get('PINECONE_API_ENV', 'create an index to get')
+        PINECONE_API_ENV = os.environ.get('PINECONE_API_ENV', 'create an index to get') #vector dimensions = 768 for instructor-xl and 1536 for OpenAI
         
         
         pinecone.init(
